@@ -91,14 +91,18 @@ The master equation framework provides a detailed kinetic model for the probabil
 
 #### Microstate Definition
 
-We define a microstate  S_i  as a vector describing the occupation of  N  cofactors:
-$$\mathbf{S_i} = [n_1, n_2, …, n_N]$$
+We define a microstate  $S_i$  as a vector describing the occupation of  N  cofactors:
+```math
+\mathbf{S_i} = [n_1, n_2, …, n_N]
+```
 where  $n_k$  (for  $k = 1, 2, \dots, N$ ) is the occupation number of cofactor $C_k$ . The number can be  0  or  +1 , representing the absence or presence of a hole on the site.
 
 #### The Master Equation
 
 The evolution of the probability vector $ \mathbf{P}(t)$ , which contains the probabilities of all microstates at time  $t$ , is governed by the master equation:
-$$\frac{d\mathbf{P}(S_i, t)}{dt} = \sum_{j} K_{ij}P(S_j, t) - K_{ji}P(S_i, t),$$
+```math
+\frac{d\mathbf{P}(S_i, t)}{dt} = \sum_{j} K_{ij}P(S_j, t) - K_{ji}P(S_i, t)
+```
 where:
 * $K_{ij}$  is the rate of transition from microstate $S_j$  to  $S_i$,
 * $K_{ji}$  is the reverse transition rate.
@@ -106,13 +110,15 @@ where:
 The solution to this equation is expressed as:
 $$\mathbf{P}(t) = e^{\mathbf{K}t} \mathbf{P}(0),$$
 where  $\mathbf{K}$  is the transition rate matrix:
-$$\mathbf{K} =
+```math
+\mathbf{K} =
 \begin{bmatrix}
 k_{11} & k_{12} & k_{13} & \cdots \\
 k_{21} & k_{22} & k_{23} & \cdots \\
 k_{31} & k_{32} & k_{33} & \cdots \\
 \vdots & \vdots & \vdots & \ddots
-\end{bmatrix}.$$
+\end{bmatrix}.
+```
 
 The diagonal elements are defined to conserve total probability:
 $$k_{ii} = -\sum_{j \neq i} k_{ji}.$$
