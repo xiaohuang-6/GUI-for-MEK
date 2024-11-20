@@ -13,8 +13,8 @@ This repository provides tools for simulating and visualizing hole bifurcation k
 - **Bayesian Optimization**: Automate the process of finding optimal parameter configurations for maximum yield.
 - **Real-Time Visualizations**: Energy landscapes and efficiency metrics are updated live with parameter changes.
 - **Constraint Enforcement**: Ensure physically valid parameters, such as:
-  - $ G_6 \leq G_1 $
-  - $ G_6 < G_7 $
+  - $G_6 \leq G_1$
+  - $G_6 < G_7$
 - **Customizable Codebase**: Modify the optimization criteria and constraints according to research needs.
 
 ---
