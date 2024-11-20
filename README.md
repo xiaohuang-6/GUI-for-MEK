@@ -2,9 +2,10 @@
 
 This project provides a Python-based GUI for **visualizing and optimizing parameters** related to electron and hole bifurcation design. It incorporates **Bayesian Optimization** to find optimal parameter configurations for maximizing final yields under specific physical constraints.
 
-This repository provides tools for simulating and visualizing hole bifurcation kinetics using master equation approaches. The repository includes:
+This repository provides tools for simulating and visualizing hole bifurcation kinetics using master equation approaches. It also contains some helpful codes for often-use MD analysis, since many of the parameters for MEK needs to be obtained from a molecular dynamic simulation (MD). The repository includes:
 * GUI.py: A graphical user interface for visualizing energy landscapes and optimizing parameters.
 * MEK_vib.py: A backend module for computing the hole bifurcation kinetics and related metrics using advanced algorithms and master equation methods.
+* analysis.ipynb: Some useful MDAnalysis tool functions that can be used to analyze MD trajectories. 
 ---
 
 ## Features
