@@ -75,12 +75,12 @@ This repository provides tools for simulating and visualizing hole bifurcation k
 
 The model enforces constraints to ensure physical validity:
 - **Energy Levels**:
-  - $ G_6 \leq G_1 $
-  - $ G_6 < G_7 $
+  - $G_6 \leq G_1$
+  - $G_6 < G_7$
 - **Distance Bounds**:
-  - $ \text{distance}_H, \text{distance}_L, \text{distance} \in [5, 15] $ (Å)
+  - $\text{distance}_H, \text{distance}_L, \text{distance} \in [5, 15]$ (Å)
 - **Reorganization Energy**:
-  - $ \text{reorgE} \in [0.7, 0.9] $ (eV)
+  - $\text{reorgE} \in [0.7, 0.9]$ (eV)
 
 ---
 ## MEK_vib.py: Hole Bifurcation Kinetics
@@ -92,47 +92,35 @@ The master equation framework provides a detailed kinetic model for the probabil
 #### Microstate Definition
 
 We define a microstate  S_i  as a vector describing the occupation of  N  cofactors:
-$$
-\mathbf{S_i} = [n_1, n_2, …, n_N]
-$$
-where  $n_k$  (for  $k = 1, 2, \dots, N$ ) is the occupation number of cofactor $ C_k$ . The number can be  0  or  +1 , representing the absence or presence of a hole on the site.
+$$\mathbf{S_i} = [n_1, n_2, …, n_N]$$
+where  $n_k$  (for  $k = 1, 2, \dots, N$ ) is the occupation number of cofactor $C_k$ . The number can be  0  or  +1 , representing the absence or presence of a hole on the site.
 
 #### The Master Equation
 
 The evolution of the probability vector $ \mathbf{P}(t)$ , which contains the probabilities of all microstates at time  $t$ , is governed by the master equation:
-$$
-\frac{d\mathbf{P}(S_i, t)}{dt} = \sum_{j} K_{ij}P(S_j, t) - K_{ji}P(S_i, t),
-$$
+$$\frac{d\mathbf{P}(S_i, t)}{dt} = \sum_{j} K_{ij}P(S_j, t) - K_{ji}P(S_i, t),$$
 where:
 * $K_{ij}$  is the rate of transition from microstate $S_j$  to  $S_i$,
 * $K_{ji}$  is the reverse transition rate.
 
 The solution to this equation is expressed as:
-$$
-\mathbf{P}(t) = e^{\mathbf{K}t} \mathbf{P}(0),
-$$
+$$\mathbf{P}(t) = e^{\mathbf{K}t} \mathbf{P}(0),$$
 where  $\mathbf{K}$  is the transition rate matrix:
-$$
-\mathbf{K} =
+$$\mathbf{K} =
 \begin{bmatrix}
 k_{11} & k_{12} & k_{13} & \cdots \\
 k_{21} & k_{22} & k_{23} & \cdots \\
 k_{31} & k_{32} & k_{33} & \cdots \\
 \vdots & \vdots & \vdots & \ddots
-\end{bmatrix}.
-$$
+\end{bmatrix}.$$
 
 The diagonal elements are defined to conserve total probability:
-$$
-k_{ii} = -\sum_{j \neq i} k_{ji}.
-$$
+$$k_{ii} = -\sum_{j \neq i} k_{ji}.$$
 
 #### Transition Rate Calculation
 
 Transition rates are computed using Marcus theory, incorporating contributions from both low-frequency (outer sphere) and high-frequency (inner sphere) vibrational modes:
-$$
-k_{i \rightarrow j} = \frac{2\pi}{\hbar} \langle V_{ij}^2 \rangle \frac{1}{\sqrt{4\pi \lambda_{ij} k_B T}} \sum_n \frac{e^{-D}}{n!} D^n \exp\left[-\frac{\left(\Delta G_{ij} + \lambda_{ij} + n\hbar\omega\right)^2}{4\lambda_{ij} k_B T}\right].
-$$
+$$k_{i \rightarrow j} = \frac{2\pi}{\hbar} \langle V_{ij}^2 \rangle \frac{1}{\sqrt{4\pi \lambda_{ij} k_B T}} \sum_n \frac{e^{-D}}{n!} D^n \exp\left[-\frac{\left(\Delta G_{ij} + \lambda_{ij} + n\hbar\omega\right)^2}{4\lambda_{ij} k_B T}\right].$$
 Here:
 * $\langle V_{ij}^2 \rangle$: thermally averaged electronic coupling,
 * $\lambda_{ij}$: reorganization energy,
@@ -140,13 +128,11 @@ Here:
 * $T$ : temperature,
 * $\Delta G_{ij}$ : standard reaction free energy,
 * $\hbar\omega$: high-frequency vibrational quantum energy,
-* $D$ : Huang-Rhys factor,  D = \frac{\lambda_{\text{in}}}{\hbar\omega} ,
+* $D$ : Huang-Rhys factor,  $D = \frac{\lambda_{\text{in}}}{\hbar\omega}$,
 * $\lambda_{\text{in}}$: high-frequency reorganization energy.
 
 The electronic coupling is modeled using an exponential decay:
-$$
-V_{ij} = V_0 e^{-\beta R_{ij}},
-$$
+$$V_{ij} = V_0 e^{-\beta R_{ij}},$$
 where  $\beta $ is the tunneling decay constant and  $R_{ij}$  is the donor-acceptor distance.
 
 ### Features of MEK_vib.py
@@ -156,9 +142,7 @@ where  $\beta $ is the tunneling decay constant and  $R_{ij}$  is the donor-acce
   * Computes transitions between microstates based on physical parameters such as reorganization energy, coupling constants, and free energy changes.
 3. Reservoir Coupling:
   * Models interactions between cofactors and external electron/hole reservoirs using detailed balancing principles:
-$$
-\frac{k_{\text{forward}}}{k_{\text{backward}}} = e^{-\beta \Delta G}.
-$$
+$$\frac{k_{\text{forward}}}{k_{\text{backward}}} = e^{-\beta \Delta G}.$$
 4. Visualization and Analysis:
   * Includes functions for visualizing population dynamics, state transitions, and fluxes over time.
 5. Stochastic Simulation:
